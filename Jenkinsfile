@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent docker
     tools {
         maven 'maven3.6.3'
         jdk 'jdk8'
@@ -21,6 +21,7 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
+            agent { dockerfile true }
             steps {
                 echo '>>>>>>>>>>>>> Build Docker Image Start >>>>>>>>>>>>>'
                 script {
