@@ -12,10 +12,12 @@ pipeline {
                 echo ">>>>>>>>>>>>> Clean   End >>>>>>>>>>>>>"
             }
         }
-        stage ('Package') {
-            echo ">>>>>>>>>>>>> Package Start >>>>>>>>>>>>>"
-            sh "mvn package"
-            echo ">>>>>>>>>>>>> Package   End >>>>>>>>>>>>>"
+        stage('Package') {
+            steps {
+                echo ">>>>>>>>>>>>> Package Start >>>>>>>>>>>>>"
+                sh "mvn package"
+                echo ">>>>>>>>>>>>> Package   End >>>>>>>>>>>>>"
+            }
         }
         stage('Build Docker Image') {
             steps {
