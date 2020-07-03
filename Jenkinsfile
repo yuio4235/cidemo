@@ -1,5 +1,6 @@
 pipeline {
-    agent docker
+    agent docker {
+    }
     tools {
         maven 'maven3.6.3'
         jdk 'jdk8'
