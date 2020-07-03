@@ -9,6 +9,7 @@ pipeline {
             steps {
                 echo '>>>>>>>>>>>>> test mvn >>>>>>>>>>>>>'
                 sh 'mvn --version'
+                sh 'mvn install'
             }
         }
     }
