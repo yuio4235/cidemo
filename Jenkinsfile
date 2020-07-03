@@ -5,11 +5,18 @@ pipeline {
         jdk 'jdk8'
     }
     stages {
-        stage('Build') {
+        state ('Clean') {
             steps {
-                echo '>>>>>>>>>>>>> test mvn >>>>>>>>>>>>>'
-                sh 'mvn --version'
+                echo ">>>>>>>>>>>>> Clean Start >>>>>>>>>>>>>"
+                sh 'mvn clean'
+                echo ">>>>>>>>>>>>> Clean   End >>>>>>>>>>>>>"
+            }
+        }
+        stage('Install') {
+            steps {
+                echo '>>>>>>>>>>>>> Install Start >>>>>>>>>>>>>'
                 sh 'mvn install'
+                echo '>>>>>>>>>>>>> Install   End >>>>>>>>>>>>>'
             }
         }
     }
