@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven 'maven3.6.3'
         jdk 'jdk8'
-        docker 'docker'
+        dockerTool 'docker'
     }
     stages {
         stage('Clean') {
