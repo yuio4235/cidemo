@@ -28,7 +28,7 @@ pipeline {
                     def targetArtifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
                 }
                 echo 'project version:'
-                echo ${version}
+                echo '${version}'
                 echo '>>>>>>>>>>>>> Build Docker Image   End >>>>>>>>>>>>>'
             }
         }
