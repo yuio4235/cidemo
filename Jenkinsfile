@@ -12,11 +12,22 @@ pipeline {
                 echo ">>>>>>>>>>>>> Clean   End >>>>>>>>>>>>>"
             }
         }
-        stage('Install') {
+        stage ('Package') {
+            echo ">>>>>>>>>>>>> Package Start >>>>>>>>>>>>>"
+            sh "mvn package"
+            echo ">>>>>>>>>>>>> Package   End >>>>>>>>>>>>>"
+        }
+        stage('Build Docker Image') {
             steps {
-                echo '>>>>>>>>>>>>> Install Start >>>>>>>>>>>>>'
-                sh 'mvn install'
-                echo '>>>>>>>>>>>>> Install   End >>>>>>>>>>>>>'
+                echo '>>>>>>>>>>>>> Build Docker Image Start >>>>>>>>>>>>>'
+                script {
+                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    def targetGroupId= sh script: 'mvn help:evaluate -Dexpression=project.groupId -q -DforceStdout', returnStdout: true
+                    def targetArtifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
+                }
+                echo 'project version:'
+                echo ${version}
+                echo '>>>>>>>>>>>>> Build Docker Image   End >>>>>>>>>>>>>'
             }
         }
     }
