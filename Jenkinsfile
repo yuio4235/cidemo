@@ -5,7 +5,7 @@ pipeline {
         jdk 'jdk8'
     }
     stages {
-        state ('Clean') {
+        stage('Clean') {
             steps {
                 echo ">>>>>>>>>>>>> Clean Start >>>>>>>>>>>>>"
                 sh 'mvn clean'
